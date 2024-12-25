@@ -24,7 +24,8 @@ void increase_capacity(){
       new_mem_loc[i] = data[i];
   }
 
-  // Mudança do ponteiro data para o novo espaço de memória com mais capacidade e libera a memória do espaço antigo
+  // Mudança do ponteiro data para o novo espaço de memória com mais capacidade
+  // e libera a memória do espaço antigo
   int* old_data = data;
   data = new_mem_loc;
   delete [] old_data;
