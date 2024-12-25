@@ -163,7 +163,7 @@ class ArrayList {
         int sum(){
             int result = data[0];
 
-            for(unsigned int i = 0; i < size_; i++){
+            for(unsigned int i = 1; i < size_; i++){
                 result += data[i];
             }
 
