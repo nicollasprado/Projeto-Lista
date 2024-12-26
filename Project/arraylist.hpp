@@ -6,8 +6,8 @@
 
 class ArrayList {
     private:
-        int* data = new int[8]; // initial size = 8
-        unsigned int size_ = 0, capacity_ = 8;
+        int* data; // initial size = 8
+        unsigned int size_, capacity_;
 
         void increase_capacity(){
             capacity_ = capacity_ * 2;
@@ -32,7 +32,11 @@ class ArrayList {
 
     public:
         // constructor
-        ArrayList() {}
+        ArrayList() {
+            this->size_ = 0;
+            this->capacity_ = 8;
+            this->data = new int[capacity_];
+        }
 
         // destructor
         ~ArrayList() {
