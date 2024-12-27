@@ -122,11 +122,17 @@ class ArrayList {
             }
 
             // iterates from end to middle and from start to middle
-            for(unsigned int i = 0; i < qt_iterations; i++){
+            for(unsigned int i = 0; i <= qt_iterations; i++){
                 if(*back == value){
                     unsigned int val_index = size_ - i;
                     found_elements.push_back(val_index);
-                }else if(*start == value){
+                }
+
+                if(start == back){
+                    continue;
+                }
+
+                if(*start == value){
                     found_elements.push_back(i);
                 }
 
@@ -149,10 +155,16 @@ class ArrayList {
 
             int result = 0;
             // iterates from end to middle and from start to middle
-            for(unsigned int i = 0; i < qt_iterations; i++){
+            for(unsigned int i = 0; i <= qt_iterations; i++){
                 if(*back == value){
                     result++;
-                }else if(*start == value){
+                }
+
+                if(start == back){
+                    continue;
+                }
+
+                if(*start == value){
                     result++;
                     break;
                 }
