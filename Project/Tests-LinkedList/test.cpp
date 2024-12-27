@@ -20,6 +20,13 @@ int main(){
         std::cout << ll[i] << std::endl;
     }
 
+    ll.insert_at(4, 1000);
+    std::cout << "size after insert at: " << ll.size() << std::endl;
+
+    for(int i = 0; i < ll.size(); i++){
+        std::cout << ll[i] << std::endl;
+    }
+
     std::cout << "Find all: " << std::endl;
     LinkedList find_all_indexes = ll.find_all(3);
 

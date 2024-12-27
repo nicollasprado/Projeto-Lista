@@ -13,6 +13,37 @@ class LinkedList {
         int_node* head, * tail;
         unsigned int size_;
 
+        int_node* get_index_addr(unsigned int index){
+            int_node* value_addr;
+            // check if index is closer to the start or the end
+            unsigned int half_size = ((size_ - 1) / 2);
+            if(index <= half_size){
+                int_node* iter = head;
+                // loop to get the value address
+                for(unsigned int i = 0; i < size_; i++){
+                    if(i == index){
+                        value_addr = iter;
+                        break;
+                    }
+
+                    iter = iter->next;
+                }
+            }else{
+                int_node* iter = tail;
+                // loop to get the value address
+                for(unsigned int i = (size_ - 1); i > 0; i--){
+                    if(i == index){
+                        value_addr = iter;
+                        break;
+                    }
+
+                    iter = iter->prev;
+                }
+            }
+
+            return value_addr;
+        }
+
     public:
         LinkedList() {
             this->head = nullptr;
@@ -220,6 +251,32 @@ class LinkedList {
             size_++;
         }
 
+        void insert_at(unsigned int index, int value){
+            if(index >= size_ || index < 0){
+                std::string error_msg =
+                    "Error trying to insert " + std::to_string(value)
+                    + " at index " + std::to_string(index)
+                    + " -- Index out of range";
+                throw std::out_of_range(error_msg);
+            }else{
+                int_node* index_addr = get_index_addr(index);
+
+                // creation of the new node
+                int_node* new_node = new int_node();
+                new_node->value = value;
+
+                // linking the new node to the linked list
+                new_node->prev = index_addr->prev;
+                new_node->next = index_addr;
+
+                int_node* before_index = index_addr->prev;
+                before_index->next = new_node;
+                index_addr->prev = new_node;
+
+                size_++;
+            }
+        }
+
 
 
 
@@ -297,32 +354,7 @@ class LinkedList {
             }else if(value_index == (int) (size_ - 1)){
                 removed = pop_back();
             }else{
-                int_node* value_addr;
-                // check if index is closer to the start or the end
-                int half_size = ((size_ - 1) / 2);
-                if(value_index <= half_size){
-                    int_node* iter = head;
-                    // loop to get the value address
-                    for(unsigned int i = 0; i < size_; i++){
-                        if((int) i == value_index){
-                            value_addr = iter;
-                            break;
-                        }
-
-                        iter = iter->next;
-                    }
-                }else{
-                    int_node* iter = tail;
-                    // loop to get the value address
-                    for(unsigned int i = (size_ - 1); i > 0; i--){
-                        if((int) i == value_index){
-                            value_addr = iter;
-                            break;
-                        }
-
-                        iter = iter->prev;
-                    }
-                }
+                int_node* value_addr = get_index_addr(value_index);
 
                 // actually remove the value
 
@@ -354,32 +386,7 @@ class LinkedList {
             }else if(index == (size_ - 1)){
                 removed = pop_back();
             }else{
-                // Loops to get the index memory address
-
-                int_node* index_addr;
-
-                // check if the index is closer to start or the end
-                unsigned int half_size = (size_ - 1) / 2;
-                if(index <= half_size){
-                    int_node* iter = head;
-                    for(unsigned int i = 0; i < size_; i++){
-                        if(i == index){
-                            index_addr = iter;
-                            break;
-                        }
-
-                        iter = iter->next;
-                    }
-                }else{
-                    int_node* iter = tail;
-                    for(unsigned int i = (size_ - 1); i > 0; i--){
-                        if(i == index){
-                            index_addr = iter;
-                        }
-
-                        iter = iter->prev;
-                    }
-                }
+                int_node* index_addr = get_index_addr(index);
 
                 // actually remove the index value
 
