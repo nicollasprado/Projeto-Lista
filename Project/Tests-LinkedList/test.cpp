@@ -62,4 +62,8 @@ int main(){
     ll.clear();
     std::cout << "size after clear: " << ll.size() << std::endl;
 
+    for(int i = 0; i < ll.size(); i++){
+        std::cout << find_all_indexes[i] << std::endl;
+    }
+
 }
