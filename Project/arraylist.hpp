@@ -339,7 +339,7 @@ class ArrayList {
                     throw std::invalid_argument(error_msg);
                 }else{
                     // loop through each removal
-                    for(unsigned int i = 0; i <= quantity; i++){
+                    for(unsigned int i = 0; i < quantity; i++){
                         // actually remove the value
                         for(unsigned int j = found_indexes[i]; j < (size_ - 1); j++){
                             data[j] = data[j + 1];
