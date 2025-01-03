@@ -124,30 +124,36 @@ class LinkedList {
         LinkedList find_all(int value){
             LinkedList found_index_list;
 
-            unsigned int qt_iterations = (this->size_) / 2;
+            if(this->size_ == 1){
+                if(head->value == value){
+                    found_index_list.push_back(0);
+                }
+            }else{
+                unsigned int qt_iterations = (this->size_) / 2;
 
-            if(qt_iterations % 2 != 0){
-                qt_iterations++;
-            }
-
-            int_node* start = this->head;
-            int_node* end = this->tail;
-            for(unsigned int i = 0; i <= qt_iterations; i++){
-                if(end->value == value){
-                    unsigned int val_index = (this->size_) - i;
-                    found_index_list.push_back(val_index);
+                if(this->size_ % 2 != 0){
+                    qt_iterations++;
                 }
 
-                if(start == end){
-                    continue;
-                }
+                int_node* start = this->head;
+                int_node* end = this->tail;
+                for(unsigned int i = 0; i < qt_iterations; i++){
+                    if(end->value == value){
+                        unsigned int val_index = (this->size_) - i;
+                        found_index_list.push_back(val_index);
+                    }
 
-                if(start->value == value){
-                    found_index_list.push_back(i);
-                }
+                    if(start == end){
+                        continue;
+                    }
 
-                start = start->next;
-                end = end->prev;
+                    if(start->value == value){
+                        found_index_list.push_back(i);
+                    }
+
+                    start = start->next;
+                    end = end->prev;
+                }
             }
 
             return found_index_list;
@@ -156,28 +162,34 @@ class LinkedList {
         int count(int value){
             int val_count = 0;
 
-            unsigned int qt_iterations = size_ / 2;
-            if(qt_iterations % 2 != 0){
-                qt_iterations++;
-            }
-
-            int_node* start = head;
-            int_node* end = tail;
-            for(unsigned int i = 0; i <= qt_iterations; i++){
-                if(end->value == value){
+            if(size_ == 1){
+                if(head->value == value){
                     val_count++;
                 }
-
-                if(start == end){
-                    continue;
+            }else{
+                unsigned int qt_iterations = size_ / 2;
+                if(size_ % 2 != 0){
+                    qt_iterations++;
                 }
 
-                if(start->value == value){
-                    val_count++;
-                }
+                int_node* start = head;
+                int_node* end = tail;
+                for(unsigned int i = 0; i < qt_iterations; i++){
+                    if(end->value == value){
+                        val_count++;
+                    }
 
-                start = start->next;
-                end = end->prev;
+                    if(start == end){
+                        break;
+                    }
+
+                    if(start->value == value){
+                        val_count++;
+                    }
+
+                    start = start->next;
+                    end = end->prev;
+                }
             }
 
             return val_count;
