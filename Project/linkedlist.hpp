@@ -109,7 +109,7 @@ class LinkedList {
             int found = -1;
 
             int_node* iter = head;
-            for(unsigned int i = 0; i < (size_ - 1); i++){
+            for(unsigned int i = 0; i < size_; i++){
                 if(iter->value == value){
                     found = i;
                     break;
