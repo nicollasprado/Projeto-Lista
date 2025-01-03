@@ -105,7 +105,7 @@ Para realizar os testes unitários é bem simples, basta seguir esse passo-a-pas
 - Abrir o terminal;
 - Ir até o diretório de testes:
 ```
-cd {Caminho do diretório principal}/Tests
+cd {Caminho do diretório principal}/Tests/Unit-Tests
 ```
 - Rodar o arquivo executável:
 #### ArrayList
@@ -129,5 +129,29 @@ g++ arraylist_unit_tests.cpp -o run_arraylist_tests
 g++ linkedlist_unit_tests.cpp -o run_linkedlist_tests
 ```
 
+<br>
+
 ## Testes de Desempenho
+Para realizar os testes de desempenho basta seguir esse passo-a-passo:
+
+- Abrir o terminal;
+- Ir até o diretório de testes:
+```
+cd {Caminho do diretório principal}/Tests/Performance-Tests
+```
+- Rodar o arquivo executável:
+```
+./run_performance_tests
+```
+
+<br>
+
+- **CASO ALGUM ARQUIVO SEJA ALTERADO**, será necessário re-compilar o arquivo de testes, basta usar o seguinte comando:
+```
+g++ performance_tests.cpp -o run_performance_tests
+```
+
+<br>
+
+## Resultado da Análise dos Desempenhos das Funções
 - Seção em desenvolvimento
