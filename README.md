@@ -69,6 +69,32 @@ void push_back(int value){
 }
 ```
 
-## Testes
+## Testes Unitários
+Para realizar os testes unitários é bem simples, basta seguir esse passo-a-passo:
 
-- Seção em desenvolvimento
+- Abrir o terminal;
+- Ir até o diretório de testes:
+```
+cd {Caminho do diretório principal}/Tests
+```
+- Rodar o arquivo executável:
+#### ArrayList
+```
+./run_arraylist_tests
+```
+#### LinkedList
+```
+./run_linkedlist_tests
+```
+
+<br>
+
+- **CASO ALGUM ARQUIVO SEJA ALTERADO**, será necessário re-compilar o arquivo de testes, basta usar o seguinte comando:
+#### ArrayList
+```
+g++ arraylist_unit_tests.cpp -o run_arraylist_tests
+```
+#### LinkedList
+```
+g++ linkedlist_unit_tests.cpp -o run_linkedlist_tests
+```
