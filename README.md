@@ -98,3 +98,6 @@ g++ arraylist_unit_tests.cpp -o run_arraylist_tests
 ```
 g++ linkedlist_unit_tests.cpp -o run_linkedlist_tests
 ```
+
+## Testes de Desempenho
+- Seção em desenvolvimento
