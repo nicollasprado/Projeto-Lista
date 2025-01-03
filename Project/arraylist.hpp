@@ -76,7 +76,7 @@ class ArrayList {
         }
 
         double percent_occupied(){
-            return (static_cast<double>(capacity_) / size_) * 0.1;
+            return (static_cast<double>(size_) / static_cast<double>(capacity_));
         }
 
         int back(){
@@ -112,65 +112,79 @@ class ArrayList {
         ArrayList find_all(int value){
             ArrayList found_elements;
 
-            int* back = data + size_ - 1;
-            int* start = data;
+            if(size_ == 1){
+                if(*data == 1){
+                    found_elements.push_back(*data);
+                }
+            }else{
+                int* back = data + size_ - 1;
+                int* start = data;
 
-            unsigned int qt_iterations = size_ / 2;
-            // If the size is odd we add 1 iteration that is the center value
-            if(qt_iterations % 2 != 0){
-                qt_iterations++;
-            }
-
-            // iterates from end to middle and from start to middle
-            for(unsigned int i = 0; i <= qt_iterations; i++){
-                if(*back == value){
-                    unsigned int val_index = size_ - i;
-                    found_elements.push_back(val_index);
+                unsigned int qt_iterations = size_ / 2;
+                // If the size is odd we add 1 iteration that is the center value
+                if(size_ % 2 != 0){
+                    qt_iterations++;
                 }
 
-                if(start == back){
-                    continue;
-                }
+                // iterates from end to middle and from start to middle
+                for(unsigned int i = 0; i < qt_iterations; i++){
+                    if(*back == value){
+                        unsigned int val_index = size_ - i;
+                        found_elements.push_back(val_index);
+                    }
 
-                if(*start == value){
-                    found_elements.push_back(i);
-                }
+                    if(start == back){
+                        break;
+                    }
 
-                back--;
-                start++;
+                    if(*start == value){
+                        found_elements.push_back(i);
+                    }
+
+                    back--;
+                    start++;
+                }
             }
 
             return found_elements;
         }
 
         int count(int value){
-            int* back = data + size_ - 1;
-            int* start = data;
-
-            unsigned int qt_iterations = size_ / 2;
-            // If the size is odd we add 1 iteration that is the center value
-            if(qt_iterations % 2 != 0){
-                qt_iterations++;
-            }
-
             int result = 0;
-            // iterates from end to middle and from start to middle
-            for(unsigned int i = 0; i <= qt_iterations; i++){
-                if(*back == value){
+
+            if(size_ == 1){
+                if(*data == value){
                     result++;
                 }
+            }else{
+                int* back = data + size_ - 1;
+                int* start = data;
 
-                if(start == back){
-                    continue;
+                // Qt iterations is the distance of both pointers to the center of the list
+                unsigned int qt_iterations = size_ / 2;
+                // If the size is odd we add 1 iteration that is the center value
+                if(size_ % 2 != 0){
+                    qt_iterations++;
                 }
 
-                if(*start == value){
-                    result++;
-                    break;
-                }
+                // iterates from end to middle and from start to middle
+                for(unsigned int i = 0; i < qt_iterations; i++){
+                    if(*back == value){
+                        result++;
+                    }
 
-                back--;
-                start++;
+                    if(start == back){
+                        break;
+                    }
+
+                    if(*start == value){
+                        result++;
+                        break;
+                    }
+
+                    back--;
+                    start++;
+                }
             }
 
             return result;
