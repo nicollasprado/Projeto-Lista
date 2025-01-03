@@ -69,6 +69,8 @@ void push_back(int value){
 }
 ```
 
+<br>
+
 ## Métodos
 
 #### Busca
@@ -94,6 +96,8 @@ void push_back(int value){
 - remove_first(int valor) => Remove o primeiro elemento encontrado do valor especificado;
 - remove_quantity(int valor, unsigned int quantidade) => Remove a quantidade especificada do valor especificado;
 - remove_at(unsigned int index) => Remove o elemento do index especificado.
+
+<br>
 
 ## Testes Unitários
 Para realizar os testes unitários é bem simples, basta seguir esse passo-a-passo:
