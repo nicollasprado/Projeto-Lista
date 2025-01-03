@@ -69,6 +69,32 @@ void push_back(int value){
 }
 ```
 
+## Métodos
+
+#### Busca
+- size() => Retorna a quantidade de elementos na lista;
+- capacity() => Retorna a quantidade de espaços totais na lista; **Somente ArrayList**
+- percent_occupied() => Retorna um double, de 0.0 a 1.0, que representa a porcentagem ocupada da lista; **Somente ArrayList**
+- back() => Retorna o último elemento da lista;
+- front() => Retorna o primeiro elemento da lista;
+- sum() => Retorna a soma dos elementos da lista;
+- count(int valor) => Retorna a quantidade de elementos encontrados na lista do valor especificado;
+- find_first(int valor) => Retorna o menor index encontrado do valor especificado, caso não seja encontrado retorna -1;
+- find_all(int valor) => Retorna, em forma de ArrayList, todos index do valor especificado.
+
+#### Adição
+- push_back(int valor) => Adiciona no fim da lista o valor especificado;
+- push_front(int valor) => Adiciona no index 0 o valor espeficiado;
+- insert_at(unsigned int index, int valor) => Adiciona no index especificado o valor especificado.
+
+#### Remoção
+- clear() => Remove todos elementos da lista;
+- pop_back() => Remove o último elemento da lista;
+- pop_front() => Remove o primeiro elemento da lista;
+- remove_first(int valor) => Remove o primeiro elemento encontrado do valor especificado;
+- remove_quantity(int valor, unsigned int quantidade) => Remove a quantidade especificada do valor especificado;
+- remove_at(unsigned int index) => Remove o elemento do index especificado.
+
 ## Testes Unitários
 Para realizar os testes unitários é bem simples, basta seguir esse passo-a-passo:
 
