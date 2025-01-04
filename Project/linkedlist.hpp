@@ -207,6 +207,21 @@ class LinkedList {
             return total_sum;
         }
 
+        int get_at(unsigned int index){
+            if(size_ <= 0){
+                throw std::invalid_argument("Invalid index " + std::to_string(index) + " -- List is empty.");
+            }else if(index >= size_){
+                throw std::out_of_range("Invalid index" + std::to_string(index) + " -- Index out of range.");
+            }else{
+                int_node* iter = head;
+                for(unsigned int i = 0; i < index; i++){
+                    iter = iter->next;
+                }
+
+                return iter->value;
+            }
+        }
+
 
 
         // Push operations

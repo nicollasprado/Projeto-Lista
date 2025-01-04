@@ -200,6 +200,10 @@ class ArrayList {
             return result;
         }
 
+        int get_at(unsigned int index){
+            return data[index];
+        }
+
 
 
         // Push operations
